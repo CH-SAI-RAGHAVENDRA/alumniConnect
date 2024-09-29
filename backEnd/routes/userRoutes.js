@@ -4,16 +4,49 @@ const router = express.Router();
 const User = require('../models/User');
 
 // Create a new user
-router.post('/users', async (req, res) => {
+router.post('/register', async (req, res) => {
   const { name, email, password } = req.body;
-  try {
-    const user = new User({ name, email, password });
-    await user.save();
-    res.status(201).json(user);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
+  // try {
+  //   const user = new User({ name, email, password });
+  //   await user.save();
+  //   res.status(201).json(user);
+  // } catch (error) {
+  //   res.status(400).json({ message: error.message });
+  // }
+  User.findOne({email:email}).then((user)=>{
+    if(user){
+      res.json("exists");
+    }
+    else{
+      try {
+        const user = new User({ name, email, password });
+         user.save();
+        res.status(201).json(user);
+      } catch (error) {
+        res.status(400).json({ message: error.message });
+      }
+    }
+  })
 });
+
+router.post('/login', async(req,res) => {
+  const {email, password} = req.body;
+  User.findOne({email:email})
+  .then((user)=>{
+    if(user){
+    if(user.password == password){
+      console.log(password, user.password)
+       res.json('Success');
+    }
+    else{
+      console.log(password, user.password)
+      res.json("password was wrong");
+    }}
+    else{
+      res.json("user not found please Login");
+    }
+  })
+})
 
 // Get all users
 router.get('/users', async (req, res) => {
