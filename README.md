@@ -1,1 +1,0 @@
-This is an Fullstack MERN project about connecting college with their ALUMNI's.
