@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../others/Navbar'
 import { useState } from 'react';
 import google from '../assets/google.svg';
 import { Link,useNavigate } from 'react-router-dom';
@@ -36,13 +35,13 @@ const RegisterAlumni = () => {
   return (
     <div className='min-h-screen w-full background'>
         <main className='flex flex-col md:flex-row justify-around items-center p-5 md:p-10'>
-            <section className='flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0 gap-[100px]'>
+            <section className='flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0 gap-[100px] '>
                 <h1 className='main-text montserrat font-[600] text-3xl md:text-4xl pt-6'>
                     Lets start our journey towards 
                     building communities and 
                     Strong Futures together
                 </h1>
-                <div className='font-montserrat font-[400] text-2xl justify-self-center text-white '>
+                <div className='font-montserrat font-[400] text-2xl justify-items-center text-white '>
                     <div>
                         <input
                         type="radio"
@@ -51,7 +50,10 @@ const RegisterAlumni = () => {
                         value="Student"
                         checked={selectedOption === "Student"}
                         onChange={handleChange}
-                        className='font-montserrat text-5xl font-semibold leading-[43.88px]  mr-[20px]'
+                        className='font-montserrat text-5xl font-semibold leading-[43.88px] mr-[20px] 
+                            appearance-none w-4 h-4 border-2 border-gray-400 rounded-full 
+                            checked:bg-black checked:border-black 
+                            checked:ring-2 checked:ring-white checked:ring-offset-2 checked:ring-offset-gray-800'
                         />
                         <label htmlFor="option1">Connect as Student</label>
                     </div>
@@ -63,7 +65,10 @@ const RegisterAlumni = () => {
                         value="Alumni"
                         checked={selectedOption === "Alumni"}
                         onChange={handleChange}
-                        className='font-montserrat text-5xl font-semibold leading-[43.88px]  mr-[20px] '
+                        className='font-montserrat text-5xl font-semibold leading-[43.88px] mr-[20px] 
+                            appearance-none w-4 h-4 border-2 border-gray-400 rounded-full 
+                            checked:bg-black checked:border-black 
+                            checked:ring-2 checked:ring-white checked:ring-offset-2 checked:ring-offset-gray-800'
                         />
                         <label htmlFor="option2">Connect as Alumni</label>
                     </div>
@@ -71,7 +76,7 @@ const RegisterAlumni = () => {
             </section>
             <div className='bg-[#2c016d] h-auto w-full md:w-[600px] p-8 rounded-lg'>
                       <form onSubmit={handleSubmit} className='flex flex-col space-y-6'>
-                        <h1 className='text-4xl text-[#e4e4e4] font-bold text-center'>Login</h1>
+                        <h1 className='text-4xl text-[#e4e4e4] font-bold text-center'>Register</h1>
                         <div className='name-det flex flex-row gap-2'>
                             <input 
                                 type='text' 

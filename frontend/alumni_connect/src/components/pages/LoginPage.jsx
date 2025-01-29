@@ -19,9 +19,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className='h-screen w-full background'>
-      <div className='flex flex-col md:flex-row justify-around items-center p-5 md:p-10'>
-        <div className='flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0'>
+    <div className='h-screen w-full background bg-[url(/images/social-media.png)] bg-no-repeat bg-[16%_70%] bg-[300px_auto] '>
+      <div className='flex flex-col md:flex-row justify-around items-start p-5 md:p-10 '>
+        <div className='flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0 relative top-[75px]'>
           <h1 className='montserrat font-[500] text-3xl md:text-4xl pt-6'>
             Always Be United And <br/>
             Build Strong Futures
