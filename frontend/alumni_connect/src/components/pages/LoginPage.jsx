@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { GoogleLogin } from '@react-oauth/google';
 import Navbar from '../others/Navbar';
-import google from '../assets/google.svg'; // Google image for button
-import { GoogleLogin } from '@react-oauth/google'; // Import the GoogleLogin component
-import axios from 'axios'
-import { useNavigate, Link } from 'react-router-dom';
-
-
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,16 +27,18 @@ const LoginPage = () => {
       localStorage.setItem('token', token);
       console.log(response.data.user.type);
       if(response.data.user.type === "alumni"){
+        console.log(response.data);
         navigate('/AlumniDashboard');
       }
       else{
         navigate('/StudentDashboard');
       }
       // Redirect to dashboard or other pages
-    } catch (err) {
-      console.log(err);
+    }  catch (err) {
+      console.log(err.response || err);
       setErrorMessage('Invalid credentials or server error');
     }
+    
   };
 
   const handleGoogleSuccess = async (response) => {
@@ -60,12 +59,12 @@ const LoginPage = () => {
   };
 
   return (
+    <>
     <div className='h-screen w-full background bg-[url(/images/social-media.png)] bg-no-repeat bg-[16%_70%] bg-[300px_auto] '>
-      <Navbar />
-      <div className="flex flex-col md:flex-row justify-around items-center p-5 md:p-10">
-        <div className="flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0">
-          <h1 className="montserrat font-[500] text-3xl md:text-4xl pt-6">
-            Always Be United And <br />
+      <div className='flex flex-col md:flex-row justify-around items-start p-5 md:p-10 '>
+        <div className='flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0 relative top-[75px]'>
+          <h1 className='montserrat font-[500] text-3xl md:text-4xl pt-6'>
+            Always Be United And <br/>
             Build Strong Futures
           </h1>
           <p className="montserrat font-extrabold text-lg md:text-xl pt-4">
@@ -136,7 +135,8 @@ const LoginPage = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
-export default LoginPage;
+export default LoginPage

@@ -48,6 +48,7 @@ const login = async (req, res) => {
         type: user.type
       },
     });
+    console.log(res.data);
   } catch (err) {
     console.error(err.message);
     res.status(500).json({ error: 'Server error' });
