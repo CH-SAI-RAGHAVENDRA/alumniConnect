@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Navbar from '../others/Navbar'
 import google from '../assets/google.svg'
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -19,10 +19,9 @@ const LoginPage = () => {
   };
 
   return (
-    <div className='h-screen w-full background'>
-      <Navbar/>
-      <div className='flex flex-col md:flex-row justify-around items-center p-5 md:p-10'>
-        <div className='flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0'>
+    <div className='h-screen w-full background bg-[url(/images/social-media.png)] bg-no-repeat bg-[16%_70%] bg-[300px_auto] '>
+      <div className='flex flex-col md:flex-row justify-around items-start p-5 md:p-10 '>
+        <div className='flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0 relative top-[75px]'>
           <h1 className='montserrat font-[500] text-3xl md:text-4xl pt-6'>
             Always Be United And <br/>
             Build Strong Futures
@@ -79,10 +78,9 @@ const LoginPage = () => {
           <div className='text-center mt-4'>
             <p className='text-[#e4e4e4]'>
               Don't have an account?{' '}
-              {/* <Link to='./RegisterAlumni' className='text-blue-400 underline'>
+              <Link to='./registerAlumni' className='text-blue-400 underline'>
                 Register
-              </Link> */}
-              
+              </Link>
             </p>
           </div>
         </div>
