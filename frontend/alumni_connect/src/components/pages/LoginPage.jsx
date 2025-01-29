@@ -60,7 +60,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="h-screen w-screen background">
+    <div className='h-screen w-full background bg-[url(/images/social-media.png)] bg-no-repeat bg-[16%_70%] bg-[300px_auto] '>
       <Navbar />
       <div className="flex flex-col md:flex-row justify-around items-center p-5 md:p-10">
         <div className="flex flex-col items-center md:items-start text-center md:text-left mb-8 md:mb-0">
