@@ -15,10 +15,11 @@ const login = async (req, res) => {
   try {
     // Find the user in both Alumni and Student models
     let user = await Alumni.findOne({ email });
+    console.log(user);
     if (!user) {
       user = await Student.findOne({ email });
     }
-
+    console.log(user);
     // If user not found in both models
     if (!user) {
       return res.status(404).json({ message: 'User not found' });

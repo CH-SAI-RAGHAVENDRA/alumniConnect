@@ -2,7 +2,7 @@ const bcrypt = require('bcryptjs');
 const Student = require('../models/StudentModel'); // Import the Student model
 
 const registerStudent = async (req, res) => {
-  const { name, email, password, rollnumber, Dept, batch, interestDomain, percentile } = req.body;
+  const { fullName, rollNo, email, department, domain, year, percentile,password } = req.body;
 
   try {
     // Check if student already exists
@@ -10,21 +10,21 @@ const registerStudent = async (req, res) => {
     if (studentExists) {
       return res.status(400).json({ message: 'Student already exists' });
     }
-
+    console.log(req.body);
     // Hash the password for manual registration
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create new student record
     const newStudent = new Student({
-      name,
-      email,
-      password: hashedPassword,
-      rollnumber,
-      Dept,
-      batch,
-      interestDomain,
+      fullName, 
+      rollNo, 
+      email, 
+      department,
+      domain, 
+      year, 
       percentile,
+      passwordL: hashedPassword,
       type:'student'
     });
 

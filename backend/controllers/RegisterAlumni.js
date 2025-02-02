@@ -2,7 +2,16 @@ const bcrypt = require('bcryptjs');
 const Alumni = require('../models/AlumniModel'); // Import the Alumni model
 
 const registerAlumni = async (req, res) => {
-  const { name, email, password, rollnumber, Dept, passOutyear, CompanyAndPostion, percentile } = req.body;
+  const {
+    fullName,
+    rollNo,
+    email,
+    department,
+    position,
+    passYear,
+    percentile,
+    password,
+  } = req.body;
 
   try {
     // Check if alumni already exists
@@ -10,21 +19,21 @@ const registerAlumni = async (req, res) => {
     if (alumniExists) {
       return res.status(400).json({ message: 'Alumni already exists' });
     }
-
+    console.log(req.body);
     // Hash the password for manual registration
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Create new alumni record
     const newAlumni = new Alumni({
-      name,
+      fullName,
+      rollNo,
       email,
-      password: hashedPassword,
-      rollnumber,
-      Dept,
-      passOutyear,
-      CompanyAndPostion,
+      department,
+      position,
+      passYear,
       percentile,
+      password :hashedPassword,
       type:'alumni'
     });
 

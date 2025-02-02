@@ -1,41 +1,57 @@
 const mongoose = require('mongoose');
 
 const studentSchema = new mongoose.Schema({
-  name: {
+  fullName: {
     type: String,
     required: true,
   },
-  rollNumber: {
+  rollNo: {
     type: String,
-    required: true,
-    unique: true, // Roll number should be unique for each student
+    unique: true,
+    required: function() {
+      return !this.isGoogleUser;
+    }, 
   },
   email: {
     type: String,
     required: true,
     unique: true, // Email should also be unique
   },
-  type:{
+  department:{
     type:String,
-    required: true
+    required: function() {
+      return !this.isGoogleUser;
+    },
   },
-  department: {
+  domain: {
     type: String,
-    required: true,
+    required: function() {
+      return !this.isGoogleUser;
+    },
   },
-  batch: {
+  year: {
     type: String,
-    required: true,
-  },
-  interestDomain: {
-    type: String,
+    required: function() {
+      return !this.isGoogleUser;
+    },
   },
   percentile: {
-    type: Number,
+    type: String,
+    required: function() {
+      return !this.isGoogleUser;
+    },
+  },
+  type: {
+    type: String,
+    required: function() {
+      return !this.isGoogleUser;
+    },
   },
   password: {
-    type: String,
-    required: true, // Password is required for manual registration, not needed for Google auth users
+    type: String, // Password is required only for manual registration
+    required: function() {
+      return !this.isGoogleUser;
+    },
   },
   isGoogleUser: {
     type: Boolean,

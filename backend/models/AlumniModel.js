@@ -1,13 +1,16 @@
 const mongoose = require('mongoose');
 
 const AlumniSchema = new mongoose.Schema({
-  name: {
+  fullName: {
     type: String,
     required: true,
   },
-  rollNumber: {
+  rollNo: {
     type: String,
-    unique: false, // For manual registrations, rollNumber can be optional for Google users
+    unique: false,
+    required: function() {
+      return !this.isGoogleUser;
+    }, // For manual registrations, rollNumber can be optional for Google users
   },
   email: {
     type: String,
@@ -16,23 +19,30 @@ const AlumniSchema = new mongoose.Schema({
   },
   department: {
     type: String,
-    required: false, // Might not be available for Google users
+    required: function() {
+      return !this.isGoogleUser;
+    }, // Might not be available for Google users
   },
-  passOutYear: {
+  passYear: {
     type: String,
-    required: false, // Might not be available for Google users
+    required: function() {
+      return !this.isGoogleUser;
+    }, // Might not be available for Google users
   },
-  companyAndPosition: {
+  position: {
     type: String,
-    required: false,
+    required: function() {
+      return !this.isGoogleUser;
+    },
   },
   percentile: {
-    type: Number,
-    required: false,
+    type: String,
+    required: function() {
+      return !this.isGoogleUser;
+    },
   },
   type:{
     type:String,
-    required: true
   },
   password: {
     type: String, // Password is required only for manual registration

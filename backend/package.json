@@ -23,6 +23,7 @@
     "passport-google-oauth20": "^2.0.0"
   },
   "devDependencies": {
+    "google-auth-library": "^9.15.1",
     "nodemon": "^3.1.9"
   }
 }

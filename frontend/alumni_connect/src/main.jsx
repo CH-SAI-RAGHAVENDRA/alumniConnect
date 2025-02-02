@@ -7,7 +7,7 @@ import { StrictMode } from 'react'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+    <GoogleOAuthProvider clientId="758149735201-k6p4kp0inmr32m0fe4bk22b9bgs4b58n.apps.googleusercontent.com">
       <App/>
     </GoogleOAuthProvider>
   </StrictMode>,
