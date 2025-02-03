@@ -57,6 +57,7 @@ const RegisterAlumni = () => {
       navigate('/');
     } catch (err) {
       setLoading(false);
+      console.log(err.response?.data);
       setErrorMessage(err.response?.data?.message || 'Registration failed');
     }
   };

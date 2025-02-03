@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs');
 const Alumni = require('../models/AlumniModel'); // Import the Alumni model
+const Student = require('../models/StudentModel'); // Import the Student model
 
 const registerAlumni = async (req, res) => {
   const {
@@ -15,9 +16,14 @@ const registerAlumni = async (req, res) => {
 
   try {
     // Check if alumni already exists
-    const alumniExists = await Alumni.findOne({ email });
-    if (alumniExists) {
-      return res.status(400).json({ message: 'Alumni already exists' });
+    let EmailExists = await Alumni.findOne({ email });
+    let RollNoExists = await Alumni.findOne({ rollNo });
+    if (EmailExists||RollNoExists) {
+      return res.status(400).json({ message: 'email or rollnumber already exists' });
+    }
+    EmailExists = await Student.findOne({ email });
+    if (EmailExists) {
+      return res.status(400).json({ message: 'email or rollnumber already exists' });
     }
     console.log(req.body);
     // Hash the password for manual registration
